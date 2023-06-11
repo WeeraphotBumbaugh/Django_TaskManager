@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Issues Page{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <h1 class="mb-4">Issues</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for status in status_list %}
+            <div class="col-md-4">
+                <h3 class="text-center">{{ status.name }}</h3>
+                {% for issue in issue_list %}
+                    {% if issue.status_id == status.id %}
+                        <div class="card mb-3 col bg-light shadow transition">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">Assignee: {{ issue.assignee }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Priority: {{ issue.priority }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Modified: {{ issue.modified_on }}</h6>
+                                <p class="card-text text-truncate">{{ issue.summary|truncatechars:200}}</p>
+                                <button type="button" class="btn btn-outline-info">
+                                    <a href="{% url 'detail' issue.id %}" class="card-link">Details</a>
+                                </button>
+                                {% if user.is_authenticated %}
+                                    <button type="button" class="btn btn-outline-warning">
+                                        <a href="{% url 'edit' issue.id %}"><i class="bi bi-pencil"></i></a>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger">
+                                        <a href="{% url 'delete' issue.id %}"><i class="bi bi-trash"></i></a>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

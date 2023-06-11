@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Favorite Task Manager - Home{% endblock title %}
 
 {% block content %}
     <div class="d-flex justify-content-center">
         <h1>Your Favorite Task Manager</h1>
     </div>
     <div class="d-flex justify-content-center">
-        <p>Manage your tasks efficiently!</p>
+        <p class="lead">Efficiently Manage Your Tasks!</p>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Manage Tasks with Roles and Teams</h3>
+                <p>
+                    With Favorite Task Manager, you can streamline your task management by assigning various roles to your team members. 
+                    Each role has specific responsibilities and permissions, ensuring efficient collaboration and accountability.
+                </p>
+                <p>
+                    The roles include:
+                    <ul>
+                        <li><strong>Product Owner:</strong> Creates tasks and sets their requirements and priorities.</li>
+                        <li><strong>Developer:</strong> Assigned to tasks and responsible for implementing and updating them.</li>
+                        <li><strong>Scrum Master:</strong> Oversees the development process, facilitates communication, and removes obstacles.</li>
+                        <li><strong>Manager (Admin):</strong> Monitors and manages the overall task management process.</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h3>Roles and Permissions</h3>
+                <p>
+                    The Favorite Task Manager ensures that the right individuals have the appropriate access and permissions for task management.
+                </p>
+                <p>
+                    Only the <strong>Product Owner</strong> can create new tasks, while both the <strong>Product Owner</strong> and the assigned 
+                    <strong>Developer</strong> have the authority to modify or delete tasks.
+                </p>
+                <p>
+                    The <strong>Scrum Master</strong> plays a vital role in the development process by facilitating collaboration, resolving issues, 
+                    and ensuring smooth workflow. They do not have direct access to task creation or modification but contribute to overall team success.
+                </p>
+                <p>
+                    The <strong>Manager (Admin)</strong> role has access to a comprehensive report page, allowing them to view and analyze all issues 
+                    across different teams. This enables effective monitoring and decision-making at a higher level.
+                </p>
+            </div>
+        </div>
     </div>
 {% endblock content %}

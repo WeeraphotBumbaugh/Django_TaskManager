@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Issue Report</h1>
+        <table class="table table-striped">
+            <colgroup>
+                <col style="width: 31%">
+                <col style="width: 9%">
+                <col style="width: 10%">
+                <col style="width: 7%">
+                <col style="width: 5%">
+                <col style="width: 14%">
+                <col style="width: 14%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Summary</th>
+                    <th>Assignee</th>
+                    <th>Reporter</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Created On</th>
+                    <th>Modified On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for issue in issue_list %}
+                <tr>
+                    <td>{{ issue.summary }}</td>
+                    <td>{{ issue.assignee }}</td>
+                    <td>{{ issue.reporter }}</td>
+                    <td>{{ issue.status }}</td>
+                    <td>{{ issue.priority }}</td>
+                    <td>{{ issue.created_on }}</td>
+                    <td>{{ issue.modified_on }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Reporter Issue Count</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reporter</th>
+                    <th>Issue Count (Done)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reporter in reporters %}
+                <tr>
+                    <td>{{ reporter.username }}</td>
+                    <td>{{ reporter.issue_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

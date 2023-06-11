@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ issue.title }}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Status: {{ issue.status }}</h3>
+                    <h4 class="card-subtitle mb-2 text-muted">Assignee: {{ issue.assignee }}</h4>
+                    <h5>Summary: {{ issue.summary }}</h5>
+                    <h6>Created on: {{ issue.created_on }}</h6>
+                    <h6>Modified by: {{ issue.modified_on }}</h6>
+                    <p class="card-text">{{ issue.body}}</p>
+                    {% if user.is_authenticated %}
+                        <button type="button" class="btn btn-outline-info">
+                            <a href="{% url 'detail' issue.id %}" class="card-link">Details</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-warning">
+                            <a href="{% url 'edit' issue.id %}"><i class="bi bi-pencil"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger">
+                            <a href="{% url 'delete' issue.id %}"><i class="bi bi-trash"></i></a>
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

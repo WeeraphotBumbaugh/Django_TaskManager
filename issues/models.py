@@ -33,16 +33,18 @@ class Issue(models.Model):
     )
     status = models.ForeignKey(
         Status,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=True, null=True
     )
     priority = models.ForeignKey(
         Priority,
         on_delete=models.CASCADE
     )
     created_on = models.DateTimeField(auto_now_add=True)
+    modified_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.summary[:100]
 
     def get_absolute_url(self):
-        pass
+        return reverse_lazy("list")
